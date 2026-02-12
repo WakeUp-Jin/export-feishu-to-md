@@ -1,22 +1,33 @@
 {
-  "name": "fm",
+  "name": "fm-ka",
   "version": "0.1.0",
-  "description": "将飞书文档转换为 Markdown 的 CLI 工具",
-  "module": "src/index.ts",
+  "description": "飞书文档转 Markdown 的 CLI 工具",
   "type": "module",
   "bin": {
-    "fm": "src/index.ts"
+    "fm": "./bin/fm.mjs"
   },
+  "files": [
+    "bin"
+  ],
   "scripts": {
     "dev": "bun run src/index.ts",
+    "build:npm": "bun build ./src/index.ts --target=node --outfile ./bin/fm.mjs",
     "build": "bun build ./src/index.ts --compile --outfile ./dist/fm",
     "build:linux": "bun build ./src/index.ts --compile --target=bun-linux-x64 --outfile ./dist/fm-linux-x64",
     "build:windows": "bun build ./src/index.ts --compile --target=bun-windows-x64 --outfile ./dist/fm-windows-x64.exe",
     "build:mac-arm": "bun build ./src/index.ts --compile --target=bun-darwin-arm64 --outfile ./dist/fm-darwin-arm64",
     "build:mac-x64": "bun build ./src/index.ts --compile --target=bun-darwin-x64 --outfile ./dist/fm-darwin-x64",
-    "build:all": "bun run build:linux && bun run build:windows && bun run build:mac-arm && bun run build:mac-x64"
+    "build:all": "bun run build:linux && bun run build:windows && bun run build:mac-arm && bun run build:mac-x64",
+    "prepublishOnly": "bun run build:npm && bun run scripts/fix-shebang.ts"
   },
-  "private": true,
+  "keywords": ["feishu", "lark", "markdown", "converter", "cli", "document", "export"],
+  "author": "WakeUp-Jin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WakeUp-Jin/export-feishu-to-md.git"
+  },
+  "homepage": "https://github.com/WakeUp-Jin/export-feishu-to-md",
   "devDependencies": {
     "@types/bun": "latest",
     "@types/js-yaml": "^4.0.9"

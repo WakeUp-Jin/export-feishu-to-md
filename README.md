@@ -1,20 +1,38 @@
 # fm
 
-飞书文档转 Markdown 的 CLI 工具。单文件二进制，无需运行时，下载即用。
+飞书文档转 Markdown 的 CLI 工具。单文件二进制或 npx 直接运行，无需复杂配置。
 
 ## 安装
 
-从 [Releases](../../releases/latest) 下载对应平台的文件，一行命令安装：
+#### 方式一：npx 直接运行（有 Node.js 环境）
+
+无需安装，直接用：
+
+```bash
+npx fm-ka export -d doxcnXXXXXXXXXX
+npx fm-ka export -w V0gQw6yEZikjBAkKcrVcd8OlnYe
+```
+
+或者全局安装：
+
+```bash
+npm i -g fm-ka
+fm export -d doxcnXXXXXXXXXX
+```
+
+#### 方式二：下载预编译二进制（无需任何运行时）
+
+从 [Releases](../../releases/latest) 下载对应平台的文件：
 
 ```bash
 # macOS Apple Silicon
-curl -Lo /usr/local/bin/fm https://github.com/WakeUp-Jin/export-feishu-to-md/releases/latest/download/fm-darwin-arm64 && chmod +x /usr/local/bin/fm
+sudo curl -Lo /usr/local/bin/fm https://github.com/WakeUp-Jin/export-feishu-to-md/releases/latest/download/fm-darwin-arm64 && sudo chmod +x /usr/local/bin/fm
 
 # macOS Intel
-curl -Lo /usr/local/bin/fm https://github.com/WakeUp-Jin/export-feishu-to-md/releases/latest/download/fm-darwin-x64 && chmod +x /usr/local/bin/fm
+sudo curl -Lo /usr/local/bin/fm https://github.com/WakeUp-Jin/export-feishu-to-md/releases/latest/download/fm-darwin-x64 && sudo chmod +x /usr/local/bin/fm
 
 # Linux
-curl -Lo /usr/local/bin/fm https://github.com/WakeUp-Jin/export-feishu-to-md/releases/latest/download/fm-linux-x64 && chmod +x /usr/local/bin/fm
+sudo curl -Lo /usr/local/bin/fm https://github.com/WakeUp-Jin/export-feishu-to-md/releases/latest/download/fm-linux-x64 && sudo chmod +x /usr/local/bin/fm
 ```
 
 Windows 用户下载 `fm-windows-x64.exe`，放到 PATH 目录下即可。
@@ -75,12 +93,14 @@ bun run build:all      # 编译所有平台
 
 ## 发布
 
-打 tag 推送即可，GitHub Actions 自动编译并创建 Release：
+打 tag 推送即可，GitHub Actions 自动编译 Release + 发布 npm：
 
 ```bash
 git tag v0.1.0
 git push origin v0.1.0
 ```
+
+> 需要在仓库 Settings -> Secrets 中添加 `NPM_TOKEN`。
 
 ## 贡献
 
