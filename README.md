@@ -82,6 +82,10 @@ git tag v0.1.0
 git push origin v0.1.0
 ```
 
+## 贡献
+
+欢迎提交 Issue 和 PR，详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
 ## License
 
-MIT
+[MIT](LICENSE)
