@@ -1,0 +1,33 @@
+{
+  "name": "fm",
+  "version": "0.1.0",
+  "description": "将飞书文档转换为 Markdown 的 CLI 工具",
+  "module": "src/index.ts",
+  "type": "module",
+  "bin": {
+    "fm": "src/index.ts"
+  },
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "build": "bun build ./src/index.ts --compile --outfile ./dist/fm",
+    "build:linux": "bun build ./src/index.ts --compile --target=bun-linux-x64 --outfile ./dist/fm-linux-x64",
+    "build:windows": "bun build ./src/index.ts --compile --target=bun-windows-x64 --outfile ./dist/fm-windows-x64.exe",
+    "build:mac-arm": "bun build ./src/index.ts --compile --target=bun-darwin-arm64 --outfile ./dist/fm-darwin-arm64",
+    "build:mac-x64": "bun build ./src/index.ts --compile --target=bun-darwin-x64 --outfile ./dist/fm-darwin-x64",
+    "build:all": "bun run build:linux && bun run build:windows && bun run build:mac-arm && bun run build:mac-x64"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/js-yaml": "^4.0.9"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "commander": "^14.0.3",
+    "js-yaml": "^4.1.1",
+    "marked": "^17.0.2",
+    "marked-xhtml": "^1.0.14"
+  }
+}
