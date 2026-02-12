@@ -2,7 +2,7 @@
  * 文件操作工具
  */
 
-import { mkdir } from "node:fs/promises";
+import { mkdir, writeFile as fsWriteFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 
 /**
@@ -13,7 +13,7 @@ export async function writeFile(
   content: string
 ): Promise<void> {
   await mkdir(dirname(filePath), { recursive: true });
-  await Bun.write(filePath, content);
+  await fsWriteFile(filePath, content, "utf-8");
 }
 
 /**

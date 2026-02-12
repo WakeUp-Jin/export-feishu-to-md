@@ -7,8 +7,7 @@
 
 import { Command } from "commander";
 import { join } from "node:path";
-import { fetchTenantAccessToken } from "./api/auth.ts";
-import { apiCounter } from "./api/counter.ts";
+import { fetchTenantAccessToken, apiCounter } from "./api/auth.ts";
 import { downloadAllMedia } from "./api/media.ts";
 import { getAllDocumentBlocks, getDocumentInfo, getWikiNodeInfo } from "./api/document.ts";
 import { resolveConfig, validateConfig } from "./config.ts";

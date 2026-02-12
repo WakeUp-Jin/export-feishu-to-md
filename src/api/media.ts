@@ -5,7 +5,7 @@
  * 直接接收 accessToken，不再内部调用认证 API
  */
 
-import { mkdir } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import type { FileToken } from "../converter/types.ts";
 import { logger } from "../utils/logger.ts";
@@ -94,8 +94,8 @@ export async function downloadAllMedia(
       const localPath = join(subDir, fileName);
       const fullPath = join(outputDir, localPath);
 
-      const buffer = await resp.arrayBuffer();
-      await Bun.write(fullPath, buffer);
+      const buffer = Buffer.from(await resp.arrayBuffer());
+      await writeFile(fullPath, buffer);
 
       tokenToPath.set(ft.token, localPath);
       downloaded++;

@@ -7,6 +7,9 @@ import type { TenantAccessTokenResponse } from "../converter/types.ts";
 import { logger } from "../utils/logger.ts";
 import { apiCounter } from "./counter.ts";
 
+// Re-export for use in index.ts to ensure single instance after bundling
+export { apiCounter };
+
 /**
  * 获取 tenant_access_token（仅调用一次）
  */

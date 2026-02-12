@@ -1,6 +1,6 @@
 {
   "name": "fm-ka",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "飞书文档转 Markdown 的 CLI 工具",
   "type": "module",
   "bin": {
